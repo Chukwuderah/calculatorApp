@@ -1,0 +1,122 @@
+* {
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
+}
+
+:root {
+    --bg-color: #111;
+    --display-bg: linear-gradient(to top right, #222, #000);
+    --btn-bg1: linear-gradient(to bottom right, #353333, #5e5e5f);
+    --btn-bg2: linear-gradient(to bottom right, #0e194e44, #0e1227);
+    --btn-bg3: linear-gradient(to top right, rgb(255, 166, 0), rgb(182, 110, 22));
+    --font-color: #fff;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.container {
+    width: 310px;
+    background-color: var(--bg-color);
+    border-radius: 40px;
+    margin-top: 90px;
+}
+
+div.theme-toggle {
+    display: flex;
+    flex-direction: row;
+    color: var(--font-color);
+    position: absolute;
+    left: 22%;
+    top: 50px;
+}
+
+#icon {
+    width: 30px;
+    cursor: pointer;
+}
+
+img#icon {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+}
+
+strong {
+    font-size: 30px;
+    font-weight: 200;
+    transform: translateY(-5px);
+}
+
+div.container div.display {
+    display: flex;
+    width: 250px;
+    height: 150px;
+    background: var(--display-bg);
+    margin: 60px auto 30px;
+}
+
+div.container div.buttons {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-between;
+    justify-content: space-between;
+    padding: 20px 20px 30px 20px;
+}
+
+div.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+div.btn h6 {
+    font-size: 24px;
+    font-weight: 200;
+}
+
+#grab {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+#grab h6 {
+    font-size: 40px;
+    font-weight: 100;
+    padding: 5px;
+    overflow: hidden;
+    color: var(--font-color);
+}
+
+.Frstcolor {
+    background: var(--btn-bg1);
+    filter: grayscale(50%);
+}
+
+.secondColor,
+.long {
+    background: var(--btn-bg2);
+    color: var(--font-color);
+    /* #0e1227; */
+}
+
+.long {
+    padding: 0 65px;
+}
+
+.orange {
+    background: var(--btn-bg3);
+}
