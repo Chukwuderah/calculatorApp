@@ -32,21 +32,16 @@ div.container {
 div.theme-toggle {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    transform: translateY(30px);
     color: var(--font-color);
-    position: absolute;
-    left: 22%;
-    top: 50px;
-}
-
-#icon {
-    width: 30px;
-    cursor: pointer;
 }
 
 img#icon {
     width: 30px;
     height: 30px;
     margin-left: 5px;
+    cursor: pointer;
 }
 
 strong {
