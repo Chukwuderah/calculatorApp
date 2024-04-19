@@ -35,13 +35,13 @@ div.theme-toggle {
     justify-content: center;
     transform: translateY(30px);
     color: var(--font-color);
+    cursor: pointer;
 }
 
 img#icon {
     width: 30px;
     height: 30px;
     margin-left: 5px;
-    cursor: pointer;
 }
 
 strong {
@@ -105,7 +105,6 @@ div.btn h6 {
 .long {
     background: var(--btn-bg2);
     color: var(--font-color);
-    /* #0e1227; */
 }
 
 .long {

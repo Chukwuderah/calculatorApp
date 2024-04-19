@@ -112,6 +112,18 @@ function calculateResult() {
 
     // Split the expression into operands based on all operators
     var operands = expression.split(/(\+|\-|\×|\÷)/);
+    // console.log(operands);
+
+    // let numberCount = 0;
+    // for (let i = 0; i < operands.length; i++) {
+    //     if (!isNaN(parseFloat(operands[i])) && isFinite(operands[i])) {
+    //         numberCount++;
+    //         if (numberCount < 1) {
+    //             // Perform action if more than one number is found
+    //             return;
+    //         }
+    //     }
+    // }
 
     // Perform calculations based on the operator
     for (var i = 0; i < operands.length; i++) {
@@ -170,5 +182,6 @@ function toggleLightMode() {
     document.documentElement.style.setProperty('--bg-color', '#f6f5f2');
     document.documentElement.style.setProperty('--display-bg', 'linear-gradient(to top right,#bed7dc, #b3c8cf');
     document.documentElement.style.setProperty('--btn-bg2', 'linear-gradient(to top right, #bed7dc, #b3c8cf');
+    document.documentElement.style.setProperty('--btn-bg3', 'linear-gradient(to top right, rgb(209, 140, 55), rgb(255, 166, 0))');
     document.documentElement.style.setProperty('--font-color', '#000');
 }
