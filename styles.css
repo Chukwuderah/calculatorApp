@@ -32,22 +32,24 @@ div.container {
 div.theme-toggle {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
     transform: translateY(30px);
     color: var(--font-color);
-    cursor: pointer;
 }
 
 img#icon {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     margin-left: 5px;
+    transform: translateY(6px);
+    cursor: pointer;
 }
 
-strong {
-    font-size: 30px;
-    font-weight: 200;
-    transform: translateY(-5px);
+span {
+    font-size: 15px;
+    font-weight: 400;
+    /* transform: translateY(-5px); */
 }
 
 div.container div.display {
@@ -79,7 +81,7 @@ div.btn {
 
 div.btn h6 {
     font-size: 24px;
-    font-weight: 200;
+    font-weight: 300;
 }
 
 #grab {
@@ -90,7 +92,7 @@ div.btn h6 {
 
 #grab h6 {
     font-size: 40px;
-    font-weight: 100;
+    font-weight: 200;
     padding: 5px;
     overflow: hidden;
     color: var(--font-color);
