@@ -1,9 +1,15 @@
-const operators = ["+", "-", "x", "÷", "%"]
+const operators = ["+", "×", "÷", "%",]
 // Get the display element
 var display = document.querySelector("#grab h6");
 function displayNumber(number) {
 
     const content = display.innerHTML;
+
+    // If the display is empty and the operator clicked is not a number, do nothing
+    if (!content && operators.includes(number)) {
+        return;
+    }
+
     const concat = content + number
 
     display.innerHTML = concat;
@@ -114,16 +120,6 @@ function calculateResult() {
     var operands = expression.split(/(\+|\-|\×|\÷)/);
     // console.log(operands);
 
-    // let numberCount = 0;
-    // for (let i = 0; i < operands.length; i++) {
-    //     if (!isNaN(parseFloat(operands[i])) && isFinite(operands[i])) {
-    //         numberCount++;
-    //         if (numberCount < 1) {
-    //             // Perform action if more than one number is found
-    //             return;
-    //         }
-    //     }
-    // }
 
     // Perform calculations based on the operator
     for (var i = 0; i < operands.length; i++) {
@@ -150,8 +146,18 @@ function calculateResult() {
         if (operands[i] === '+') {
             result += parseFloat(operands[i + 1]);
         } else if (operands[i] === '-') {
-            result -= parseFloat(operands[i + 1]);
+            // Handle negative arithmetic
+            // If the next operand starts with a '-', subtract the absolute value of that operand
+            if (operands[i + 1].startsWith('-')) {
+                result -= Math.abs(parseFloat(operands[i + 1]));
+            } else {
+                result -= parseFloat(operands[i + 1]);
+            }
         }
+    }
+
+    if (expression === '') {
+        return;
     }
 
     // Update the display with the final result
