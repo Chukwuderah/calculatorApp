@@ -25,76 +25,6 @@ function backSpace() {
     display.innerHTML = newContent;
 }
 
-// function calculateResult() {
-//     // Get the display element
-//     var display = document.querySelector("#grab h6");
-//     // Get the expression entered in the calculator
-//     var expression = display.innerHTML;
-//     console.log(expression);
-//     // Replace the regular slash and X with the Unicode division and multiplicatin symbols respectively
-//     expression = expression.replace(/\//g, '÷'); // Replace all occurrences globally
-//     expression = expression.replace(/\*/g, '×'); // Replace all occurrences globally
-
-//     // Check if the expression contains percentage
-//     if (expression.includes('%')) {
-//         // Remove the percentage sign
-//         expression = expression.replace('%', '');
-//         // Calculate the percentage
-//         var result = parseFloat(expression) / 100;
-//         // Update the display with the result
-//         display.innerHTML = result;
-//         return;
-//     }
-
-//     // Check if the expression contains division
-//     if (expression.includes('÷')) {
-//         // Split the expression into operands
-//         var operands = expression.split('÷');
-//         // Perform the division
-//         var result = parseFloat(operands[0]) / parseFloat(operands[1]);
-//         // Update the display with the result
-//         display.innerHTML = result;
-//         return;
-//     }
-
-//     // Check if the expression contains multiplication
-//     if (expression.includes('×')) {
-//         console.log("multiplication")
-//         // Split the expression into operands
-//         var operands = expression.split('×');
-//         // Perform the multiplication
-//         var result = parseFloat(operands[0]) * parseFloat(operands[1]);
-//         // Update the display with the result
-//         display.innerHTML = result;
-//         return;
-//     }
-
-//     // Check if the expression contains addition
-//     if (expression.includes('+')) {
-//         // Split the expression into operands
-//         var operands = expression.split('+');
-//         // Perform the addition
-//         console.log(operands);
-//         var result = parseFloat(operands[0]) + parseFloat(operands[1]);
-//         // Update the display with the result
-//         console.log(result);
-//         display.innerHTML = result;
-//         return;
-//     }
-
-//     // Check if the expression contains subtraction
-//     if (expression.includes('-')) {
-//         // Split the expression into operands
-//         var operands = expression.split('-');
-//         // Perform the subtraction
-//         var result = parseFloat(operands[0]) - parseFloat(operands[1]);
-//         // Update the display with the result
-//         display.innerHTML = result;
-//         return;
-//     }
-// }
-
-
 function calculateResult() {
     // Get the display element
     var display = document.querySelector("#grab h6");
@@ -120,44 +50,47 @@ function calculateResult() {
     var operands = expression.split(/(\+|\-|\×|\÷)/);
     // console.log(operands);
 
-
-    // Perform calculations based on the operator
-    for (var i = 0; i < operands.length; i++) {
-        if (operands[i] === '÷') {
-            // Perform the division
-            var result = parseFloat(operands[i - 1]) / parseFloat(operands[i + 1]);
-            // Update the array with the result and remove the used operands
-            operands.splice(i - 1, 3, result);
-            // Reset the index to recheck the same position
-            i--;
-        } else if (operands[i] === '×') {
-            // Perform the multiplication
-            var result = parseFloat(operands[i - 1]) * parseFloat(operands[i + 1]);
-            // Update the array with the result and remove the used operands
-            operands.splice(i - 1, 3, result);
-            // Reset the index to recheck the same position
-            i--;
-        }
+    // Check if the expression contains only one number
+    if (operands.length === 1) {
+        return; // Return null if there's no operation to perform
     }
 
-    // Perform addition and subtraction
+
+    // Check if there's no number after the last operator
+    if (isNaN(parseFloat(operands[operands.length - 1])) || !isFinite(operands[operands.length - 1])) {
+        return; // Return null if the expression ends with an operator
+    }
+
+
+    // Initialize result and current operator
     var result = parseFloat(operands[0]);
-    for (var i = 1; i < operands.length; i += 2) {
-        if (operands[i] === '+') {
-            result += parseFloat(operands[i + 1]);
-        } else if (operands[i] === '-') {
-            // Handle negative arithmetic
-            // If the next operand starts with a '-', subtract the absolute value of that operand
-            if (operands[i + 1].startsWith('-')) {
-                result -= Math.abs(parseFloat(operands[i + 1]));
-            } else {
-                result -= parseFloat(operands[i + 1]);
+    var currentOperator = '+';
+
+    // Iterate through operands starting from the second element
+    for (var i = 1; i < operands.length; i++) {
+        var operand = operands[i];
+
+        // Check if the operand is an operator
+        if (['+', '-', '×', '÷'].includes(operand)) {
+            currentOperator = operand; // Update current operator
+        } else {
+            // Perform calculations based on the current operator
+            if (currentOperator === '+') {
+                result += parseFloat(operand);
+            } else if (currentOperator === '-') {
+                // Handle negative arithmetic
+                // If the next operand starts with a '-', subtract the absolute value of that operand
+                if (operand.startsWith('-')) {
+                    result -= Math.abs(parseFloat(operand));
+                } else {
+                    result -= parseFloat(operand);
+                }
+            } else if (currentOperator === '×') {
+                result *= parseFloat(operand);
+            } else if (currentOperator === '÷') {
+                result /= parseFloat(operand);
             }
         }
-    }
-
-    if (expression === '') {
-        return;
     }
 
     // Update the display with the final result
