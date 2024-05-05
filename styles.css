@@ -116,3 +116,28 @@ div.btn h6 {
 .orange {
     background: var(--btn-bg3);
 }
+
+@media (max-width: 600px) {
+    div.container {
+        width: 100vw;
+        padding-top: 10px;
+        margin: 0%;
+        height: auto;
+        border-radius: 0%;
+    }
+
+    div.container div.display {
+        width: 320px;
+        height: 175px;
+    }
+
+    div.btn {
+        width: 70px;
+        height: 70px;
+        margin: 0 5px 15px 0;
+    }
+
+    .long {
+        padding: 0 75px;
+    }
+}
