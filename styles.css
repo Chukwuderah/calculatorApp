@@ -117,9 +117,9 @@ div.btn h6 {
     background: var(--btn-bg3);
 }
 
-/* @media (max-width: 600px) {
+@media (max-width: 600px) {
     div.container {
-        width: 80vw;
+        width: 370px;
         padding-top: 10px;
         margin: 0%;
         height: auto;
@@ -140,4 +140,4 @@ div.btn h6 {
     .long {
         padding: 0 75px;
     }
-} */
+}
