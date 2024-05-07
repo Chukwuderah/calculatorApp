@@ -119,7 +119,7 @@ div.btn h6 {
 
 @media (max-width: 600px) {
     div.container {
-        width: 350px;
+        width: 365px;
         padding-top: 10px;
         margin: 0%;
         height: auto;
@@ -132,7 +132,7 @@ div.btn h6 {
     }
 
     div.btn {
-        width: 70px;
+        width: 50px;
         height: 70px;
         margin: 0 5px 15px 0;
     }
